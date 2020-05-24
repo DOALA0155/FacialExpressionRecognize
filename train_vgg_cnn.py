@@ -36,4 +36,5 @@ vgg16.trainable = False
 print(model.summary())
 
 model.compile(optimizer="Adam", loss="categorical_crossentropy", metrics=["accuracy"])
-model.fit(x_train, y_train, epochs=20, batch_size=32, validation_split=0.2)
+model.fit(x_train, y_train, epochs=20, batch_size=10, validation_split=0.2)
+model.save("./Models/vgg16_cnn.h5")
