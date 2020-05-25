@@ -3,6 +3,7 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization
 from keras.utils import to_categorical
 from keras.applications import VGG16
+from keras.callbacks import ModelCheckpoint
 from sklearn.model_selection import train_test_split
 
 with open("./Data/image_data.pkl", "rb") as f:
