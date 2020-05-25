@@ -36,5 +36,10 @@ vgg16.trainable = False
 print(model.summary())
 
 model.compile(optimizer="Adam", loss="categorical_crossentropy", metrics=["accuracy"])
-model.fit(x_train, y_train, epochs=20, batch_size=10, validation_split=0.2)
+
+filepath="./Models/model-{epoch:02d}-{val_accuracy:.2f}.h5"
+checkpoint = ModelCheckpoint(filepath, monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')
+callbacks_list = [checkpoint]
+
+model.fit(x_train, y_train, epochs=20, batch_size=10, validation_split=0.2, callbacks=callbacks_list)
 model.save("./Models/vgg16_cnn.h5")
