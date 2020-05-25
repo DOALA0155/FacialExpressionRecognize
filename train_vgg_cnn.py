@@ -18,7 +18,7 @@ label_data = to_categorical(label_data)
 x_train, x_test, y_train, y_test = train_test_split(image_data, label_data, shuffle=True)
 
 print(x_train.shape)
-vgg16 = VGG16(weights="imagenet", include_top=False, input_shape=(48, 48, 3))
+vgg16 = VGG16(weights="imagenet", include_top=False, input_shape=(350, 350, 3))
 
 model = Sequential()
 model.add(vgg16)

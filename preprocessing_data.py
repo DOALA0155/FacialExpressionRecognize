@@ -36,7 +36,10 @@ def preprocessing_images():
             face_image = image_pixels[top: bottom, left: right]
             face_image = cv2.resize(face_image, (350, 350))
 
-        images.append(face_image)
+        color_image = cv2.cvtColor(face_image, cv2.COLOR_GRAY2RGB).astype(np.float16)
+        color_image /= 255.
+        color_image = color_image.astype(np.float16)
+        images.append(color_image)
         bar.update()
 
     images = np.array(images)
