@@ -15,7 +15,7 @@ def plot(history):
         plt.title("Training and validation accuracy")
         plt.legend()
 
-        plt.show()
+        plt.savefig("./Images/Accuracy.png")
 
     if "loss" in keys:
         loss = history.history["loss"]
@@ -28,4 +28,4 @@ def plot(history):
         plt.title("Training and validation loss")
         plt.legend()
 
-        plt.show()
+        plt.savefig("./Images/Loss.png")

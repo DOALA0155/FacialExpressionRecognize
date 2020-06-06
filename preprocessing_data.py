@@ -4,11 +4,10 @@ import numpy as np
 import pyprind
 import cv2
 import face_recognition
-import matplotlib.pyplot as plt
 import time
 
 def preprocessing_images():
-    data_dir = "/Users/katsuyamashouki/Desktop/Programming/Python/AI/Datasets/ImageData/FER2013/fer2013.csv"
+    data_dir = "~/Desktop/Programming/Python/AI/Datasets/ImageData/FER2013/fer2013.csv"
 
     face_data = pd.read_csv(data_dir)
 
@@ -29,12 +28,12 @@ def preprocessing_images():
         face_locations = face_recognition.face_locations(image_pixels)
 
         if len(face_locations) == 0:
-            face_image = cv2.resize(image_pixels, (350, 350))
+            face_image = cv2.resize(image_pixels, (250, 250))
         else:
             face_location = face_locations[0]
             top, right, bottom, left = face_location
             face_image = image_pixels[top: bottom, left: right]
-            face_image = cv2.resize(face_image, (350, 350))
+            face_image = cv2.resize(face_image, (250, 250))
 
         color_image = cv2.cvtColor(face_image, cv2.COLOR_GRAY2RGB).astype(np.float16)
         color_image /= 255.
